@@ -33,6 +33,9 @@ function ConfigWindow(webData) {
     // 開発元にメールする    
     var mailToDeveloperRow = Ti.UI.createTableViewRow(style.config.mailToDeveloperRow);
     table.appendRow(mailToDeveloperRow);
+    // キャッシュをクリアする    
+    var clearCacheRow = Ti.UI.createTableViewRow(style.config.clearCacheRow);
+    table.appendRow(clearCacheRow);
     // 利用規約    
     var ruleRow = Ti.UI.createTableViewRow(style.config.ruleRow);
     table.appendRow(ruleRow);
@@ -120,7 +123,20 @@ function ConfigWindow(webData) {
             });
             dialog.open();
         }
-        else if(e.index == 6) { //利用規約
+        else if(e.index == 6) { //キャッシュをクリア
+			var webViewCacheDir = Ti.Filesystem.getFile(Ti.Filesystem.applicationCacheDirectory, "webviewCache");
+			Ti.API.info("cacheDiroctory=" + Ti.Filesystem.applicationCacheDirectory);
+//			Ti.API.info("getDirectoryListing\n" + webViewCacheDir.getDirectoryListing());
+//			Ti.API.info('Array length before: ' + webViewCacheDir.getDirectoryListing().length);
+			webViewCacheDir.deleteDirectory(true);
+//			Ti.API.info('Array length after: ' + webViewCacheDir.getDirectoryListing().length);
+            var dialog = Ti.UI.createAlertDialog({
+                message: "キャッシュをクリアしました。",
+                buttonNames: ['OK']
+            });
+            dialog.show();
+        }
+        else if(e.index == 7) { //利用規約
             Ti.App.Analytics.trackPageview('/rules');
             var webView = Ti.UI.createWebView();
 		    webView.url = config.rulesUrl + encodeURI(config.appName);

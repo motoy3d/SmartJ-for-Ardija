@@ -227,6 +227,13 @@ exports.style = {
             ,hasChild: true
             ,height: 55
         },
+        clearCacheRow : {
+            title: "キャッシュをクリア"
+            ,color: config.mainTextColor
+            ,width: Ti.UI.FILL
+            ,hasChild: true
+            ,height: 55
+        },
         ruleRow : {
             title: "利用規約"
             ,color: config.mainTextColor
@@ -249,8 +256,8 @@ exports.style = {
 			type: 'CONTENT'
 		},
         buttonBar : {
-            backgroundColor: config.color
-            ,tintColor: config.color
+            backgroundColor: config.tintColor
+            ,tintColor: config.tintColor
             ,width: 140
         },
 		dateLabel : {
@@ -403,8 +410,8 @@ exports.style = {
             ,backgroundColor: "#bbb"
 	    },
 	    compeButtonBar : {
-	        backgroundColor: config.color
-            ,tintColor: config.color
+	        backgroundColor: config.tintColor
+            ,tintColor: config.tintColor
             ,width: 200
 	    },
         sortButtonAndroid : {
@@ -418,7 +425,6 @@ exports.style = {
             ,height: 36
             ,width: 100
             ,left: 0
-//            ,top: 5
         },
         jButtonAndroid : {
             color: "lightgray"
